@@ -1,0 +1,259 @@
+/* ============ Gadget Store — patch.css: newer feature styles (Sales Boost + My Orders) ============ */
+/* Loaded after style.css — keep this file when updating. */
+/* ================= SALES BOOST (Shopify-style urgency) ================= */
+/* ---- smart badges ---- */
+.smart-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:4px 10px;border-radius:20px;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.bdg-best{background:linear-gradient(135deg,#7c3aed,#4f46e5)}
+.bdg-trend{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.bdg-new{background:linear-gradient(135deg,#10b981,#059669)}
+.product-card .smart-badge{position:absolute;left:10px;top:10px;z-index:2}
+.product-card .sale-badge ~ .smart-badge,
+.product-card .smart-badge ~ .smart-badge{top:40px}
+.product-card .sale-badge ~ .smart-badge ~ .smart-badge,
+.product-card .smart-badge ~ .smart-badge ~ .smart-badge{top:70px}
+.g-main{position:relative}
+.g-smartbadges{position:absolute;top:14px;right:14px;z-index:2;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+
+/* ---- live viewers ---- */
+.boost-viewers{display:flex;align-items:center;gap:8px;background:#fff7f2;border:1px solid #ffd9c2;color:#b34700;font-size:13px;font-weight:600;border-radius:8px;padding:8px 12px;margin:10px 0 0}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:#22c55e;position:relative;flex:0 0 10px}
+.pulse-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid #22c55e;animation:pping 1.6s ease-out infinite}
+@keyframes pping{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.3);opacity:0}}
+
+/* ---- product countdown ---- */
+.boost-countdown{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#fff1e8,#ffe4d1);border:1px dashed var(--primary);border-radius:10px;padding:10px 14px;margin:10px 0 0;font-weight:700;color:#9a3c00}
+.bcd-timer{display:inline-flex;gap:6px}
+.bcd-timer div{background:#1f2937;color:#fff;border-radius:6px;padding:4px 8px;text-align:center;min-width:44px}
+.bcd-timer b{display:block;font-size:15px;line-height:1.1}
+.bcd-timer small{font-size:9px;text-transform:uppercase;opacity:.75;font-weight:600}
+
+/* ---- low stock urgency ---- */
+.boost-urgency{background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-weight:700;border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:8px;animation:urglow 1.8s ease-in-out infinite}
+.urgency-pulse{display:inline-block;animation:uzap .8s ease-in-out infinite}
+@keyframes uzap{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+@keyframes urglow{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.35)}50%{box-shadow:0 0 0 6px rgba(239,68,68,0)}}
+
+/* ---- stock progress bar ---- */
+.boost-stockbar{margin:12px 0 0}
+.bsb-top{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#c2410c;margin-bottom:6px}
+.bsb-track{height:10px;background:#fee8d8;border-radius:10px;overflow:hidden}
+.bsb-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#fbbf24,#f97316,#ef4444);transition:width .6s ease}
+
+/* ---- sticky buy bar ---- */
+.sticky-buybar{position:fixed;left:0;right:0;bottom:0;z-index:900;background:#fff;border-top:1px solid #eee;box-shadow:0 -4px 18px rgba(0,0,0,.12);display:flex;align-items:center;gap:12px;padding:10px 16px;transform:translateY(110%);transition:transform .3s ease}
+.sticky-buybar.show{transform:translateY(0)}
+.sticky-buybar img{width:48px;height:48px;object-fit:contain;border:1px solid #eee;border-radius:8px;background:#fafafa}
+.sbb-info{flex:1;min-width:0}
+.sbb-info strong{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#222}
+.sbb-info span{color:var(--primary);font-weight:800;font-size:16px}
+.sbb-btn{white-space:nowrap;padding:10px 22px}
+body.has-stickybar{padding-bottom:76px}
+
+/* ---- sales pop toast ---- */
+.sales-pop{position:fixed;left:16px;bottom:16px;z-index:950;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.18);border:1px solid #f0e6dc;display:flex;gap:12px;align-items:center;padding:12px 14px;max-width:330px;transform:translateX(-120%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.2),opacity .3s}
+.sales-pop.show{transform:translateX(0);opacity:1}
+.sales-pop img{width:52px;height:52px;object-fit:contain;border-radius:8px;background:#fafafa;border:1px solid #eee;flex:0 0 52px}
+.sp-txt{font-size:13px;line-height:1.5;color:#333}
+.sp-txt b{color:#111}
+.sp-time{color:#888;font-size:11px}
+.sp-close{position:absolute;top:4px;right:8px;border:0;background:none;color:#aaa;font-size:14px;cursor:pointer}
+@media(max-width:640px){.sales-pop{left:10px;bottom:86px;max-width:calc(100vw - 20px)}}
+
+/* ================= MY ORDERS ================= */
+.myo-empty{text-align:center;background:#fff;border-radius:14px;padding:48px 20px;box-shadow:0 2px 10px rgba(0,0,0,.06);max-width:560px;margin:0 auto}
+.myo-empty-icon{font-size:52px;margin-bottom:10px}
+.myo-empty h3{margin:0 0 8px;color:#222}
+.myo-empty p{color:#666;font-size:14px;line-height:1.7}
+.myo-phone-form{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.myo-phone-form input{padding:12px 16px;border:1px solid #ddd;border-radius:8px;font-size:15px;min-width:230px}
+.myo-phone-inline{justify-content:flex-start;margin:0 0 18px}
+.myo-phone-inline input{min-width:0;flex:1;max-width:340px}
+.myo-card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:20px;overflow:hidden;border:1px solid #f0e6dc}
+.myo-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 20px;background:#fffaf5;border-bottom:1px solid #f5e8da}
+.myo-ordno{display:flex;align-items:center;gap:10px;font-size:16px;flex-wrap:wrap}
+.copy-btn{border:1px solid var(--primary);background:#fff;color:var(--primary);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all .2s}
+.copy-btn:hover{background:var(--primary);color:#fff}
+.copy-btn.copied{background:#16a34a;border-color:#16a34a;color:#fff}
+.myo-date{color:#888;font-size:13px;margin-top:6px}
+.myo-total{text-align:right}
+.myo-total small{display:block;color:#888;font-size:12px}
+.myo-total b{font-size:20px;color:var(--primary)}
+.myo-total .badge{margin-top:6px;display:inline-block}
+.myo-steps{display:flex;padding:22px 20px 18px;overflow-x:auto}
+.myo-step{display:flex;align-items:center;flex:1;min-width:0;position:relative}
+.myo-dot{width:30px;height:30px;border-radius:50%;background:#e5e5e5;color:#888;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;z-index:1}
+.myo-lbl{font-size:12px;color:#999;margin-left:8px;white-space:nowrap}
+.myo-line{flex:1;height:3px;background:#e5e5e5;margin:0 6px;border-radius:2px;min-width:14px}
+.myo-step.done .myo-dot{background:#16a34a;color:#fff}
+.myo-step.done .myo-lbl{color:#16a34a;font-weight:600}
+.myo-step.done .myo-line{background:#16a34a}
+.myo-step.current .myo-dot{background:var(--primary);color:#fff;box-shadow:0 0 0 5px rgba(242,101,34,.18);animation:urglow 1.8s ease-in-out infinite}
+.myo-step.current .myo-lbl{color:var(--primary);font-weight:700}
+.myo-cancelled{margin:18px 20px 0;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:8px;padding:12px 16px;font-size:14px}
+.myo-items{padding:6px 20px}
+.myo-item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed #eee;font-size:14px}
+.myo-item:last-child{border-bottom:0}
+.myo-iname small{color:#888}
+.myo-iprice{font-weight:700;white-space:nowrap}
+.myo-foot{display:flex;gap:18px;flex-wrap:wrap;padding:14px 20px;background:#fafafa;border-top:1px solid #f0e6dc;font-size:13px;color:#666}
+.myo-foot a{color:var(--primary);font-weight:600}
+@media(max-width:640px){.myo-total{text-align:left}.myo-lbl{display:none}.myo-steps{padding:16px 12px}}
+.myo-find{margin-top:22px;text-align:center}
+.myo-find summary{cursor:pointer;color:var(--primary);font-size:13px;font-weight:600;display:inline-block}
+.myo-find summary:hover{text-decoration:underline}
+.myo-find .myo-phone-form{margin-top:12px}
+
+/* ============ mobile banner (<picture>) ============ */
+.slide picture{display:block}
+.slide picture img{width:100%;height:min(80vh,640px);object-fit:cover;display:block}
+@media(max-width:900px){.slide picture img{height:46vh}}
+
+/* ============ mobile: categories keep auto-sliding; products become 2-col grid ============ */
+@media(max-width:768px){
+  /* product marquees -> clean 2-column grid like reference (first 4, rest via See More) */
+  .p-marquee{overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .p-marquee .p-track{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:auto;animation:none;padding:2px}
+  .p-marquee .p-track .product-card{flex:none;min-width:0}
+  .p-marquee .p-track .product-card:nth-child(n+5){display:none}
+  .p-marquee .product-card img{height:150px}
+  .p-marquee .p-info{padding:10px;gap:6px}
+  .p-marquee .p-info h3{font-size:13px;height:38px}
+  .p-marquee .p-price .new{font-size:16px}
+  .p-marquee .add-cart-form{flex-direction:column;gap:6px}
+  .p-marquee .qty-step{align-self:flex-start}
+  .p-marquee .btn-add{width:100%;padding:9px 0;font-size:13px}
+  /* shop-by-price + testimonials: swipeable rows (no auto-scroll) */
+  .su-marquee,.testi-marquee{
+    overflow-x:auto;overflow-y:hidden;
+    -webkit-mask-image:none;mask-image:none;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+  }
+  .su-marquee::-webkit-scrollbar,.testi-marquee::-webkit-scrollbar{display:none}
+  .su-track,.testi-track{animation:none}
+  .su-badge,.testi-card{scroll-snap-align:start}
+}
+
+/* ============ fix: no horizontal page scroll on mobile ============ */
+html,body{overflow-x:clip}
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
+@media(max-width:700px){
+  .hd-row{gap:10px;padding:10px 12px}
+  .logo{min-width:0;flex-shrink:1}
+  .logo span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:17px}
+  .hd-icons{gap:2px}
+  .hd-ic{width:38px;height:38px;font-size:19px;flex:0 0 auto}
+}
+
+/* ============ mobile bottom navigation bar (phones only) ============ */
+.mobile-bottom-nav{display:none}
+@media(max-width:768px){
+  body{padding-bottom:66px}
+  .mobile-bottom-nav{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:940;
+    background:#fff;border-top:1px solid #eee;box-shadow:0 -4px 18px rgba(0,0,0,.08);
+    padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  .mbn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:#8a8a8a;font-size:10px;font-weight:600;padding:4px 0}
+  .mbn-item.active{color:var(--primary)}
+  .mbn-ic{position:relative;display:flex}
+  .mbn-ic svg{width:23px;height:23px;display:block}
+  .mbn-badge{position:absolute;top:-6px;right:-11px;background:var(--primary);color:#fff;font-size:9px;font-weight:700;min-width:16px;height:16px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+  /* lift sticky buy bar + sales pop above the bottom nav */
+  .sticky-buybar{bottom:66px}
+  body.has-stickybar{padding-bottom:144px}
+}
+@media(max-width:640px){.sales-pop{bottom:142px}}
+
+/* ============ Payment gateway (Daraz-style) ============ */
+.pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 4px}
+.pay-card{display:flex;align-items:center;gap:12px;border:2px solid #e5e7eb;border-radius:12px;padding:14px;cursor:pointer;position:relative;transition:border-color .15s,box-shadow .15s;background:#fff}
+.pay-card:hover{border-color:#f5b58a}
+.pay-card.selected{border-color:#f26522;box-shadow:0 4px 14px rgba(242,101,34,.18)}
+.pay-card input{position:absolute;opacity:0;pointer-events:none}
+.pay-ico{font-size:30px;line-height:1;flex-shrink:0}
+.pay-txt{display:flex;flex-direction:column;gap:2px}
+.pay-txt b{font-size:15px}
+.pay-txt small{color:#777;font-size:12.5px}
+.pay-txt .pay-fee{color:#c2410c;font-weight:700}
+.pay-check{margin-left:auto;width:26px;height:26px;border-radius:50%;background:#e5e7eb;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.pay-card.selected .pay-check{background:#f26522}
+.pay-pending-box{background:#fff;border-radius:16px;padding:34px 28px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.pp-ico{font-size:56px;margin-bottom:8px}
+.pay-pending-box h1{font-size:22px;margin:0 0 10px}
+.pp-steps{text-align:left;max-width:380px;margin:18px auto;padding-left:22px;color:#444}
+.pp-steps li{margin:8px 0}
+.pp-spinner{margin:18px 0;font-weight:700;color:#f26522}
+.pp-spinner span{display:inline-block;width:18px;height:18px;border:3px solid #ffd9c2;border-top-color:#f26522;border-radius:50%;animation:ppspin 0.8s linear infinite;vertical-align:-3px;margin-right:8px}
+@keyframes ppspin{to{transform:rotate(360deg)}}
+.pp-note{color:#777;font-size:13px}
+.myo-pay{display:block;margin-top:4px;color:#777;font-size:12px}
+@media(max-width:640px){.pay-methods{grid-template-columns:1fr}.pay-card{padding:12px}}
+
+/* ---- Manual payments (v2) ---- */
+.pay-howto{display:none;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin:12px 0}
+.pay-howto.show{display:block}
+.pay-howto h4{margin:0 0 10px;font-size:15px;color:#7c2d12}
+.pay-detail{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed #f3e2cf;font-size:14px}
+.pay-detail:last-child{border-bottom:0}
+.pay-detail b{color:#7c2d12;font-weight:600;flex-shrink:0}
+.pay-detail .copyable{font-weight:700;letter-spacing:.3px;text-align:right;word-break:break-all}
+.pay-steps{margin:10px 0 0;padding-left:20px;color:#555;font-size:13.5px}
+.pay-steps li{margin:5px 0}
+.pay-wa{display:inline-block;margin-top:12px;background:#25d366;color:#fff!important;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none}
+.pay-wa:hover{background:#1fb857;color:#fff!important}
+.btn-red{background:linear-gradient(135deg,#dc2626,#f87171);box-shadow:0 4px 14px rgba(220,38,38,.3);color:#fff}
+.btn-red:hover{color:#fff;filter:brightness(1.05)}
+
+/* ============ Checkout payments — premium v3 (mobile + desktop) ============ */
+.pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0 6px}
+.pay-card{display:flex;align-items:center;gap:14px;border:2px solid #e8ecf1;border-radius:16px;padding:16px 18px;cursor:pointer;position:relative;transition:border-color .2s,box-shadow .2s,transform .2s,background .2s;background:#fff;box-shadow:0 1px 3px rgba(15,23,42,.05)}
+.pay-card:hover{border-color:#f5b58a;transform:translateY(-2px);box-shadow:0 10px 22px rgba(242,101,34,.12)}
+.pay-card.selected{border-color:#f26522;background:linear-gradient(180deg,#ffffff 55%,#fff7ed);box-shadow:0 10px 26px rgba(242,101,34,.20)}
+.pay-card input{position:absolute;opacity:0;pointer-events:none}
+.pay-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:27px;line-height:1;flex-shrink:0}
+.pay-card-easypaisa .pay-ico{background:#e7f6e5}
+.pay-card-jazzcash .pay-ico{background:#fdeceb}
+.pay-card-bank .pay-ico{background:#e8eefc}
+.pay-card-cod .pay-ico{background:#fff0e4}
+.pay-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.pay-txt b{font-size:15.5px;color:#111827}
+.pay-txt small{color:#6b7280;font-size:12.5px;line-height:1.45}
+.pay-txt .pay-fee{color:#c2410c;font-weight:700}
+.pay-check{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#eef1f5;color:#b9c1cc;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;transition:background .2s,color .2s,transform .2s}
+.pay-card.selected .pay-check{background:#16a34a;color:#fff;transform:scale(1.12)}
+/* how-to-pay card */
+.pay-howto{display:none;background:#fff;border:1px solid #f0e2d2;border-radius:16px;margin:14px 0;overflow:hidden;box-shadow:0 8px 24px rgba(124,45,18,.08)}
+.pay-howto.show{display:block;animation:payfade .25s ease}
+@keyframes payfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pay-howto h4{margin:0;padding:14px 18px;font-size:15px;color:#fff;background:linear-gradient(135deg,#c2410c,#f26522);letter-spacing:.2px}
+.pay-detail{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px dashed #f3e2cf;font-size:14px}
+.pay-detail:last-of-type{border-bottom:0}
+.pay-detail b{color:#7c2d12;font-weight:600;flex-shrink:0}
+.pay-detail .copyable{font-weight:700;letter-spacing:.3px;text-align:right;word-break:break-all;display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.pay-detail .copy-btn{flex-shrink:0}
+.pay-steps{margin:0;padding:14px 18px 18px 50px;color:#4b5563;font-size:13.5px;list-style:none;counter-reset:pstep;background:#fffdf9}
+.pay-steps li{margin:9px 0;counter-increment:pstep;position:relative;line-height:1.55}
+.pay-steps li::before{content:counter(pstep);position:absolute;left:-33px;top:1px;width:22px;height:22px;border-radius:50%;background:#ffedd5;color:#c2410c;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+/* manual proof box */
+#manualBox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-top:14px}
+#manualBox .form-group{margin-bottom:14px}
+#manualBox .form-group:last-child{margin-bottom:0}
+#manualBox label{font-weight:700;font-size:14px;color:#111827;display:block;margin-bottom:7px}
+#manualBox .form-control{width:100%;padding:13px 14px;font-size:15px;border:1.5px solid #dbe1e8;border-radius:10px;background:#fff;transition:border-color .15s,box-shadow .15s}
+#manualBox .form-control:focus{outline:none;border-color:#f26522;box-shadow:0 0 0 3px rgba(242,101,34,.15)}
+#manualBox input[type=file]{border:2px dashed #cbd5e1;cursor:pointer}
+#manualBox input[type=file]:hover{border-color:#f5b58a}
+/* submit button */
+#placeBtn{background:linear-gradient(135deg,#ea580c,#f26522);border:none;border-radius:12px;padding:16px;font-size:17px;font-weight:800;letter-spacing:.3px;box-shadow:0 10px 24px rgba(242,101,34,.35);transition:transform .15s,box-shadow .15s,filter .15s}
+#placeBtn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(242,101,34,.45);filter:brightness(1.06)}
+#placeBtn:active{transform:none;box-shadow:0 6px 16px rgba(242,101,34,.3)}
+@media(max-width:640px){
+  .pay-methods{grid-template-columns:1fr;gap:10px}
+  .pay-card{padding:13px 14px;gap:12px}
+  .pay-ico{width:46px;height:46px;font-size:24px;border-radius:12px}
+  .pay-detail{flex-direction:column;align-items:flex-start;gap:6px}
+  .pay-detail .copyable{width:100%;justify-content:space-between;text-align:left}
+  #manualBox{padding:14px}
+  #placeBtn{font-size:16px}
+}
